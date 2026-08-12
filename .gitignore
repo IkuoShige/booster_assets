@@ -48,3 +48,5 @@ node_modules/
 # Debug Files
 debug/
 *.debug
+
+*.egg-info/

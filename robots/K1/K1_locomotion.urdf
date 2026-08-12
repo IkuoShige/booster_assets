@@ -17,7 +17,7 @@
   </joint-->
 
   <link
-    name="Trunk">
+    name="trunk">
     <inertial>
       <origin
         xyz="-0.0043392 -0.00065534 0.065686"
@@ -78,7 +78,7 @@
     </collision>
   </link>
   <link
-    name="Head_1">
+    name="aahead_yaw_link">
     <inertial>
       <origin
         xyz="-0.00069503 -0.00038527 0.031688"
@@ -118,26 +118,26 @@
     </collision>
   </link>
   <joint
-    name="AAHead_yaw"
+    name="aahead_yaw_joint"
     type="fixed">
     <origin
       xyz="0.0056 0 0.2149"
       rpy="0 0 0" />
     <parent
-      link="Trunk" />
+      link="trunk" />
     <child
-      link="Head_1" />
+      link="aahead_yaw_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1."
-      upper="1."
-      effort="6"
-      velocity="18"
+      lower="-1.012"
+      upper="1.012"
+      effort="6.0"
+      velocity="7.85"
     />
   </joint>
   <link
-    name="Head_2">
+    name="aahead_pitch_link">
     <inertial>
       <origin
         xyz="0.011042 -0.00092871 0.080698"
@@ -177,26 +177,26 @@
     </collision>
   </link>
   <joint
-    name="Head_pitch"
+    name="aahead_pitch_joint"
     type="fixed">
     <origin
       xyz="0 0 0.033"
       rpy="0 0 0" />
     <parent
-      link="Head_1" />
+      link="aahead_yaw_link" />
     <child
-      link="Head_2" />
+      link="aahead_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-0.349"
-      upper="0.855"
-      effort="6"
-      velocity="18"
+      lower="-0.314"
+      upper="0.794"
+      effort="6.0"
+      velocity="7.85"
     />
   </joint>
   <link
-    name="Left_Arm_1">
+    name="aaleft_shoulder_pitch_link">
     <inertial>
       <origin
         xyz="-0.002701 0.062383 -0.011965"
@@ -227,26 +227,26 @@
     </visual>
   </link>
   <joint
-    name="ALeft_Shoulder_Pitch"
+    name="aaleft_shoulder_pitch_joint"
     type="fixed">
     <origin
       xyz="0 0.077 0.1845"
       rpy="0 0 0" />
     <parent
-      link="Trunk" />
+      link="trunk" />
     <child
-      link="Left_Arm_1" />
+      link="aaleft_shoulder_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.316"
-      upper="1.22"
-      effort="14"
-      velocity="18"
+      lower="-2.932"
+      upper="1.196"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="Left_Arm_2">
+    name="left_shoulder_roll_link">
     <inertial>
       <origin
         xyz="0.01729 0.018221 -4.329E-05"
@@ -285,26 +285,26 @@
     </collision>
   </link>
   <joint
-    name="Left_Shoulder_Roll"
+    name="left_shoulder_roll_joint"
     type="fixed">
     <origin
       xyz="0.0025 0.068 -0.0135"
       rpy="0 0 0" />
     <parent
-      link="Left_Arm_1" />
+      link="aaleft_shoulder_pitch_link" />
     <child
-      link="Left_Arm_2" />
+      link="left_shoulder_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-1.74"
-      upper="1.57"
-      effort="14"
-      velocity="18"
+      lower="-1.642"
+      upper="1.629"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="Left_Arm_3">
+    name="left_elbow_pitch_link">
     <inertial>
       <origin
         xyz="-0.0003979 0.072617 -0.00066218"
@@ -314,7 +314,7 @@
       <inertia
         ixx="0.006069"
         ixy="-0.000017"
-        ixz=" -0.000001"
+        ixz="-0.000001"
         iyy="0.000387"
         iyz="-0.000079"
         izz="0.006067" />
@@ -344,26 +344,26 @@
     </collision>
   </link>
   <joint
-    name="Left_Elbow_Pitch"
+    name="left_elbow_pitch_joint"
     type="fixed">
     <origin
       xyz="0 0.044428 0"
       rpy="0 0 0" />
     <parent
-      link="Left_Arm_2" />
+      link="left_shoulder_roll_link" />
     <child
-      link="Left_Arm_3" />
+      link="left_elbow_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-2.27"
-      upper="2.27"
-      effort="14"
-      velocity="18"
+      lower="-1.885"
+      upper="1.885"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="left_hand_link">
+    name="left_elbow_yaw_link">
     <inertial>
       <origin
         xyz="-0.0015751 0.084637 0.0087033"
@@ -403,27 +403,27 @@
     </collision>
   </link>
   <joint
-    name="Left_Elbow_Yaw"
+    name="left_elbow_yaw_joint"
     type="fixed">
     <origin
       xyz="0 0.1215 0"
       rpy="0 0 0" />
     <parent
-      link="Left_Arm_3" />
+      link="left_elbow_pitch_link" />
     <child
-      link="left_hand_link" />
+      link="left_elbow_yaw_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.44"
-      upper="0"
-      effort="14"
-      velocity="18"
+      lower="-2.242"
+      upper="0.816"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
 
   <link
-    name="Right_Arm_1">
+    name="aaright_shoulder_pitch_link">
     <inertial>
       <origin
         xyz="-0.0026302 -0.06251 -0.01199"
@@ -454,26 +454,26 @@
     </visual>
   </link>
   <joint
-    name="ARight_Shoulder_Pitch"
+    name="aaright_shoulder_pitch_joint"
     type="fixed">
     <origin
       xyz="0 -0.077 0.1845"
       rpy="0 0 0" />
     <parent
-      link="Trunk" />
+      link="trunk" />
     <child
-      link="Right_Arm_1" />
+      link="aaright_shoulder_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.316"
-      upper="1.22"
-      effort="14"
-      velocity="18"
+      lower="-2.932"
+      upper="1.196"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="Right_Arm_2">
+    name="right_shoulder_roll_link">
     <inertial>
       <origin
         xyz="0.017229 -0.018428 4.3784E-05"
@@ -512,26 +512,26 @@
     </collision>
   </link>
   <joint
-    name="Right_Shoulder_Roll"
+    name="right_shoulder_roll_joint"
     type="fixed">
     <origin
       xyz="0.0025 -0.068 -0.0135"
       rpy="0 0 0" />
     <parent
-      link="Right_Arm_1" />
+      link="aaright_shoulder_pitch_link" />
     <child
-      link="Right_Arm_2" />
+      link="right_shoulder_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-1.57"
-      upper="1.74"
-      effort="14"
-      velocity="18"
+      lower="-1.642"
+      upper="1.629"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="Right_Arm_3">
+    name="right_elbow_pitch_link">
     <inertial>
       <origin
         xyz="-0.00039919 -0.072601 -0.00065629"
@@ -571,26 +571,26 @@
     </collision>
   </link>
   <joint
-    name="Right_Elbow_Pitch"
+    name="right_elbow_pitch_joint"
     type="fixed">
     <origin
       xyz="0 -0.044428 0"
       rpy="0 0 0" />
     <parent
-      link="Right_Arm_2" />
+      link="right_shoulder_roll_link" />
     <child
-      link="Right_Arm_3" />
+      link="right_elbow_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-2.27"
-      upper="2.27"
-      effort="14"
-      velocity="18"
+      lower="-1.885"
+      upper="1.885"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
   <link
-    name="right_hand_link">
+    name="right_elbow_yaw_link">
     <inertial>
       <origin
         xyz="-0.0015177 -0.084536 0.0086733"
@@ -630,27 +630,27 @@
     </collision>
   </link>
   <joint
-    name="Right_Elbow_Yaw"
+    name="right_elbow_yaw_joint"
     type="fixed">
     <origin
       xyz="0 -0.1215 0"
       rpy="0 0 0" />
     <parent
-      link="Right_Arm_3" />
+      link="right_elbow_pitch_link" />
     <child
-      link="right_hand_link" />
+      link="right_elbow_yaw_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="0"
-      upper="2.44"
-      effort="14"
-      velocity="18"
+      lower="-0.816"
+      upper="2.242"
+      effort="14.0"
+      velocity="33.51"
     />
   </joint>
 
   <link
-    name="Left_Hip_Pitch">
+    name="left_hip_pitch_link">
     <inertial>
       <origin
         xyz="-0.010093 -0.0019934 -0.024713"
@@ -681,26 +681,26 @@
     </visual>
   </link>
   <joint
-    name="Left_Hip_Pitch"
+    name="left_hip_pitch_joint"
     type="revolute">
     <origin
       xyz="0 0.096 -0.077"
       rpy="0 0 0" />
     <parent
-      link="Trunk" />
+      link="trunk" />
     <child
-      link="Left_Hip_Pitch" />
+      link="left_hip_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.0"
-      upper="2.21"
-      effort="30"
-      velocity="7.1"
+      lower="-2.958"
+      upper="2.226"
+      effort="68.0"
+      velocity="14.66"
     />
   </joint>
   <link
-    name="Left_Hip_Roll">
+    name="left_hip_roll_link">
     <inertial>
       <origin
         xyz="0.023585 0.000049 -0.024996"
@@ -739,26 +739,26 @@
     </collision>
   </link>
   <joint
-    name="Left_Hip_Roll"
+    name="left_hip_roll_joint"
     type="revolute">
     <origin
       xyz="0 0 -0.026"
       rpy="0 0 0" />
     <parent
-      link="Left_Hip_Pitch" />
+      link="left_hip_pitch_link" />
     <child
-      link="Left_Hip_Roll" />
+      link="left_hip_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-0.4"
-      upper="1.57"
-      effort="35"
-      velocity="12.9"
+      lower="-0.375"
+      upper="1.536"
+      effort="43.0"
+      velocity="12.57"
     />
   </joint>
   <link
-    name="Left_Hip_Yaw">
+    name="left_hip_yaw_link">
     <inertial>
       <origin
         xyz="-0.0084744 -0.0040494 -0.087906"
@@ -797,26 +797,26 @@
     </collision>
   </link>
   <joint
-    name="Left_Hip_Yaw"
+    name="left_hip_yaw_joint"
     type="revolute">
     <origin
       xyz="0.012 0 -0.0485"
       rpy="0 0 0" />
     <parent
-      link="Left_Hip_Roll" />
+      link="left_hip_roll_link" />
     <child
-      link="Left_Hip_Yaw" />
+      link="left_hip_yaw_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1."
-      upper="1."
-      effort="20"
-      velocity="18.1"
+      lower="-1.012"
+      upper="1.012"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
   <link
-    name="Left_Shank">
+    name="left_knee_pitch_link">
     <inertial>
       <origin
         xyz="-0.00081083 0.0031459 -0.10922"
@@ -863,26 +863,26 @@
     </collision>
   </link>
   <joint
-    name="Left_Knee_Pitch"
+    name="left_knee_pitch_joint"
     type="revolute">
     <origin
       xyz="-0.014 0 -0.117"
       rpy="0 0 0" />
     <parent
-      link="Left_Hip_Yaw" />
+      link="left_hip_yaw_link" />
     <child
-      link="Left_Shank" />
+      link="left_knee_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
       lower="0."
-      upper="2.23"
-      effort="40"
-      velocity="12.5"
+      upper="2.321"
+      effort="112.0"
+      velocity="12.57"
     />
   </joint>
   <link
-    name="Left_Ankle_Cross">
+    name="left_ankle_pitch_link">
     <inertial>
       <origin
         xyz="0.000000 0.000000 0.000000"
@@ -913,26 +913,26 @@
     </visual>
   </link>
   <joint
-    name="Left_Ankle_Pitch"
+    name="left_ankle_pitch_joint"
     type="revolute">
     <origin
       xyz="0.00019706 0.0002 -0.24519"
       rpy="0 0 0" />
     <parent
-      link="Left_Shank" />
+      link="left_knee_pitch_link" />
     <child
-      link="Left_Ankle_Cross" />
+      link="left_ankle_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
       lower="-0.87"
       upper="0.345"
-      effort="20"
-      velocity="18.1"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
   <link
-    name="left_foot_link">
+    name="left_ankle_roll_link">
     <inertial>
       <origin
         xyz="0.011662 0.000244 -0.014364"
@@ -972,27 +972,27 @@
     </collision>
   </link>
   <joint
-    name="Left_Ankle_Roll"
+    name="left_ankle_roll_joint"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="0 0 0" />
     <parent
-      link="Left_Ankle_Cross" />
+      link="left_ankle_pitch_link" />
     <child
-      link="left_foot_link" />
+      link="left_ankle_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
       lower="-0.345"
       upper="0.345"
-      effort="20"
-      velocity="18.1"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
 
   <link
-    name="Right_Hip_Pitch">
+    name="right_hip_pitch_link">
     <inertial>
       <origin
         xyz="-0.010065 0.0020086 -0.024739"
@@ -1023,26 +1023,26 @@
     </visual>
   </link>
   <joint
-    name="Right_Hip_Pitch"
+    name="right_hip_pitch_joint"
     type="revolute">
     <origin
       xyz="0 -0.096 -0.077"
       rpy="0 0 0" />
     <parent
-      link="Trunk" />
+      link="trunk" />
     <child
-      link="Right_Hip_Pitch" />
+      link="right_hip_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-3.0"
-      upper="2.21"
-      effort="30"
-      velocity="7.1"
+      lower="-2.958"
+      upper="2.226"
+      effort="68.0"
+      velocity="14.66"
     />
   </joint>
   <link
-    name="Right_Hip_Roll">
+    name="right_hip_roll_link">
     <inertial>
       <origin
         xyz="0.023585 0.000049 -0.024996"
@@ -1081,26 +1081,26 @@
     </collision>
   </link>
   <joint
-    name="Right_Hip_Roll"
+    name="right_hip_roll_joint"
     type="revolute">
     <origin
       xyz="0 0 -0.026"
       rpy="0 0 0" />
     <parent
-      link="Right_Hip_Pitch" />
+      link="right_hip_pitch_link" />
     <child
-      link="Right_Hip_Roll" />
+      link="right_hip_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
-      lower="-1.57"
-      upper="0.4"
-      effort="35"
-      velocity="12.9"
+      lower="-1.536"
+      upper="0.375"
+      effort="43.0"
+      velocity="12.57"
   />
   </joint>
   <link
-    name="Right_Hip_Yaw">
+    name="right_hip_yaw_link">
     <inertial>
       <origin
         xyz="-0.008475 0.0040392 -0.087906"
@@ -1139,26 +1139,26 @@
     </collision>
   </link>
   <joint
-    name="Right_Hip_Yaw"
+    name="right_hip_yaw_joint"
     type="revolute">
     <origin
       xyz="0.012 0 -0.0485"
       rpy="0 0 0" />
     <parent
-      link="Right_Hip_Roll" />
+      link="right_hip_roll_link" />
     <child
-      link="Right_Hip_Yaw" />
+      link="right_hip_yaw_link" />
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1."
-      upper="1."
-      effort="20"
-      velocity="18.1"
+      lower="-1.012"
+      upper="1.012"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
   <link
-    name="Right_Shank">
+    name="right_knee_pitch_link">
     <inertial>
       <origin
         xyz="-0.000805 -0.003146 -0.109215"
@@ -1205,26 +1205,26 @@
     </collision>
   </link>
   <joint
-    name="Right_Knee_Pitch"
+    name="right_knee_pitch_joint"
     type="revolute">
     <origin
       xyz="-0.014 0 -0.117"
       rpy="0 0 0" />
     <parent
-      link="Right_Hip_Yaw" />
+      link="right_hip_yaw_link" />
     <child
-      link="Right_Shank" />
+      link="right_knee_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
       lower="0."
-      upper="2.23"
-      effort="40"
-      velocity="12.5"
+      upper="2.321"
+      effort="112.0"
+      velocity="12.57"
     />
   </joint>
   <link
-    name="Right_Ankle_Cross">
+    name="right_ankle_pitch_link">
     <inertial>
       <origin
         xyz="0.000000 0.000000 0.000000"
@@ -1255,26 +1255,26 @@
     </visual>
   </link>
   <joint
-    name="Right_Ankle_Pitch"
+    name="right_ankle_pitch_joint"
     type="revolute">
     <origin
       xyz="0.00019706 -0.0002 -0.24519"
       rpy="0 0 0" />
     <parent
-      link="Right_Shank" />
+      link="right_knee_pitch_link" />
     <child
-      link="Right_Ankle_Cross" />
+      link="right_ankle_pitch_link" />
     <axis
       xyz="0 1 0" />
     <limit
       lower="-0.87"
       upper="0.345"
-      effort="20"
-      velocity="18.1"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
   <link
-    name="right_foot_link">
+    name="right_ankle_roll_link">
     <inertial>
       <origin
         xyz="0.011662 -0.000244 -0.014364"
@@ -1314,22 +1314,22 @@
     </collision>
   </link>
   <joint
-    name="Right_Ankle_Roll"
+    name="right_ankle_roll_joint"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="0 0 0" />
     <parent
-      link="Right_Ankle_Cross" />
+      link="right_ankle_pitch_link" />
     <child
-      link="right_foot_link" />
+      link="right_ankle_roll_link" />
     <axis
       xyz="1 0 0" />
     <limit
       lower="-0.345"
       upper="0.345"
-      effort="20"
-      velocity="18.1"
+      effort="38.3"
+      velocity="17.59"
     />
   </joint>
  
