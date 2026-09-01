@@ -684,7 +684,7 @@
     name="left_hip_pitch_joint"
     type="revolute">
     <origin
-      xyz="0 0.096 -0.077"
+      xyz="0 0.096 -0.062"
       rpy="0 0 0" />
     <parent
       link="trunk" />
@@ -1026,7 +1026,7 @@
     name="right_hip_pitch_joint"
     type="revolute">
     <origin
-      xyz="0 -0.096 -0.077"
+      xyz="0 -0.096 -0.062"
       rpy="0 0 0" />
     <parent
       link="trunk" />
